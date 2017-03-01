@@ -1,0 +1,34 @@
+{
+  "name": "redux-wait-for-state",
+  "version": "0.1.0",
+  "description": "Wait for state in async thunks",
+  "main": "dist/index.js",
+  "repository": "git@github.com:karl/redux-wait-for-state.git",
+  "author": "Karl O'Keeffe <github@monket.net>",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf dist",
+    "prepublish": "yarn run clean && yarn run test-once && yarn run build",
+    "build": "babel src --out-dir dist --ignore test.js",
+    "test": "jest --watch",
+    "test-once": "jest"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-jest": "^19.0.0",
+    "babel-preset-es2015": "^6.22.0",
+    "bluebird": "^3.4.7",
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-config-prettier": "^1.4.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jest": "^19.0.1",
+    "jest": "^19.0.2",
+    "rimraf": "^2.6.1",
+    "webpack": "^2.2.1"
+  },
+  "jest": {
+    "timers": "fake",
+    "collectCoverage": true
+  }
+}
