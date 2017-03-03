@@ -1,6 +1,6 @@
 {
   "name": "redux-wait-for-state",
-  "version": "0.1.7",
+  "version": "1.0.0",
   "description": "Wait for state in async thunks",
   "main": "dist/index.js",
   "repository": "git@github.com:karl/redux-wait-for-state.git",
