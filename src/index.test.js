@@ -40,3 +40,32 @@ test('wait for state resolves when predicate returns true', () => {
 
   expect(mock).toHaveBeenCalled();
 });
+
+test('wait for state resolves in next tick if predicate already returns true', () => {
+  const state = {
+    isValueWeWant: true,
+  };
+
+  const mock = jest.fn();
+  const unsubscribeMock = jest.fn();
+  const subscribeMock = jest.fn(() => unsubscribeMock);
+  const getStateMock = jest.fn(() => state);
+  const predicate = jest.fn(s => s.isValueWeWant);
+
+  const STORE = {
+    subscribe: subscribeMock,
+    getState: getStateMock,
+  };
+
+  const { waitForState, setStore } = createWaitForState();
+
+  setStore(STORE);
+  waitForState(predicate).then(mock);
+
+  expect(subscribeMock).not.toHaveBeenCalled();
+  expect(predicate).toHaveBeenCalledWith(state);
+
+  jest.runAllTimers();
+
+  expect(mock).toHaveBeenCalled();
+});
